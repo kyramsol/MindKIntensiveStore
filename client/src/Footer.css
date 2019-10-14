@@ -1,0 +1,36 @@
+.Footer {
+    height: 10vh;
+    background: black;
+    color: white;
+    display: flex;
+    margin-bottom: 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+.asearch {
+    border: 2px solid white;
+    height: 55px;
+    width: 55px;
+    background: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size:14px;
+    font-family: open sans,sans-serif;
+    margin:0px 18px;
+    padding: 0;
+    text-align: center;
+    color: white;
+
+
+}
+
+.asearch:hover {
+    background: white;
+    color: black;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.asearch:focus
+{
+    outline: none;
+}
