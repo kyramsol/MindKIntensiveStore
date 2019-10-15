@@ -6,7 +6,6 @@ import Footer from './FooterComponent'
 
 import Content from "./ContentComponent"
 
-import  WeatherDisplay from "./weather"
 
 
 
