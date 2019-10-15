@@ -8,13 +8,13 @@ class SideMenu extends Component {
     {
         return (
             <div className="widget">
-                <h3 className="widget-title">Категории</h3>
+                <h3 className="widget-title">Categories</h3>
                 <ul className="widget-list">
-                    <li><a href="">Дизайн</a></li>
-                    <li><a href="">Фотошоп</a></li>
-                    <li><a href="">Типографика</a></li>
-                    <li><a href="">Музыка</a></li>
-                    <li><a href="">Видео</a></li>
+                    <li><a href="">random</a></li>
+                    <li><a href="">random</a></li>
+                    <li><a href="">random</a></li>
+                    <li><a href="">random</a></li>
+                    <li><a href="">random</a></li>
                 </ul>
             </div>
         );

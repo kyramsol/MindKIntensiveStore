@@ -10,7 +10,7 @@ class ProductBlock extends Component {
             <div className="content content-col">
                 <div className="position">
                     <div className="imag center">
-
+                        <img src={productData.image_path}></img>
                         <div className="buy center">
                             <button className="but center">
                             Buy

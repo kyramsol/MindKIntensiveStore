@@ -22,7 +22,7 @@ class Content extends Component {
     }
     render() {
         const product=this.state.ProductData;
-        if (!product) return <div>loading</div>;
+        if (!product) return < div className="Content">loading</div>;
         return (
             <div className="Content">
             <div>

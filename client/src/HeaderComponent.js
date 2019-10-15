@@ -9,10 +9,10 @@ class Header extends Component {
             <div>
             <div className="Header-navigator">
                 <ul>
-                    <li>Доставка</li>
-                    <li>Оплата</li>
-                    <li>Обратная связь</li>
-                    <li>О нас</li>
+                    <li>Delivery</li>
+                    <li>Pay</li>
+                    <li>Callback</li>
+                    <li>About us</li>
                 </ul>
             </div>
             <div className="Header">
