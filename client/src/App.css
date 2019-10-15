@@ -8,9 +8,8 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: royalblue;
+  height: 10vh;
   color: white;
 }
 
@@ -18,6 +17,16 @@
   font-size: large;
 }
 .
+
+.App-content {
+  height: 90vh;
+}
+.App-footer {
+  height: 10vh;
+  width: 100%;
+  background: gray;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
