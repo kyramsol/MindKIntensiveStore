@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Category_product::class, function (Faker\Generator $faker) {
+$factory->define(App\CategoryProduct::class, function (Faker\Generator $faker) {
 
 
     return [
@@ -11,6 +11,5 @@ $factory->define(App\Category_product::class, function (Faker\Generator $faker) 
         'category_id' => function () {
             return factory(App\Category::class)->create()->id;
         },
-
     ];
 });

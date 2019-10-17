@@ -12,21 +12,11 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::get('/valera', function () {
-    return response()->json([
-        'name' => 'Abigail',
-        'state' => 'CA'
-    ])->header('Access-Control-Allow-Origin',"*");
-});
+Route::get('/category', 'CategoryController@showCategories');
+
+
 Route::get('/product', 'ProductController@showProducts');
-
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
-
