@@ -1,0 +1,79 @@
+.position {
+  height: auto;
+  width: 200px;
+  display: inline-block;
+  margin-top: 30px;
+}
+.imag {
+  height: 400px;
+  width: 300px;
+  border: 1px solid black;
+  position: relative;
+}
+.imag img {
+  height: 220px;
+  width: 220px;
+}
+
+.calling {
+  margin-top: 10px;
+  width: 250px;
+  height: 57px;
+  border: 1px solid lightgray;
+  color: #909090;
+  font-size: 13px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: open sans, sans-serif;
+}
+
+.price {
+  height: 30px;
+  width: 50px;
+  color: white;
+  background: black;
+  font-weight: 600;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.buy {
+  position: absolute;
+  bottom: 0px;
+  height: 250px;
+  width: 250px;
+  color: white;
+  border: 0px;
+  opacity: 0;
+
+  background: rgba(0, 0, 0, 0.3);
+}
+.buy:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.but {
+  font-size: 15px;
+  background: none;
+  border: 1px solid white;
+  height: 45px;
+  width: 100px;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+}
+.but:hover {
+  background: white;
+  color: black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.but:focus {
+  outline: none;
+}
+.govno {
+  height: 1000px;
+}

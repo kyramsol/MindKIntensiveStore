@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class StoreDB extends Migration
+class Categories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class StoreDB extends Migration
      */
     public function up()
     {
-
-
-
-
-
-
-
-
+        Schema::create('categories', function (Blueprint $table)
+        {
+            $table->increments('id')->unsigned();
+            $table->string('name');
+            $table->integer("parent_id");
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,16 +29,6 @@ class StoreDB extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_products');
-        Schema::dropIfExists('categories_products');
-        Schema::dropIfExists('orders');
-        Schema::dropIfExists('products');
         Schema::dropIfExists('categories');
-        Schema::dropIfExists('producers');
-
-
-
-
-
     }
 }
