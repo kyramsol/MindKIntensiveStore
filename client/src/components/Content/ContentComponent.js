@@ -6,7 +6,7 @@ class Content extends Component {
   state = { ProductData: null };
 
   componentDidMount() {
-    fetch("http://localhost/api/product")
+    fetch("http://localhost/api/products")
       .then(response => response.json())
       .then(json => {
         this.setState({ ProductData: json });

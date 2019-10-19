@@ -16,5 +16,8 @@ class ProductController extends Controller
             ->orderBy('quant', 'desc')->take(12)->get();
         return response()->json($products)->header('Access-Control-Allow-Origin',"*");
     }
-    
+    public function ShowProduct($id){
+        $product=Product::find($id);
+        return response()->json($product)->header('Access-Control-Allow-Origin', '*');
+    }
 }

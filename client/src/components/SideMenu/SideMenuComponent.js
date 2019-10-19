@@ -26,8 +26,8 @@ class SideMenu extends Component {
         <h3 className="widget-title">Categories</h3>
         <List component="nav" aria-label="secondary mailbox folders">
           {CategoryData.map(item => (
-            <ListItem button>
-              <ListItemText primary={item.name} />
+            <ListItem button key={item.id}>
+              <ListItemText  primary={item.name} />
             </ListItem>
           ))}
         </List>

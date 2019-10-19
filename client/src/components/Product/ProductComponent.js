@@ -8,19 +8,21 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 class ProductBlock extends Component {
   render() {
     const productData = this.props.value;
     if (!productData) return <div></div>;
+      let to='/product/'+productData.id;
     return (
-      <Card className='imag'>
-        <CardContent >
-            <img src={productData.image_path} />
+      <Card className="imag">
+        <CardContent>
+          <img src={productData.image_path} />
           <Typography gutterBottom variant="h5" component="h2">
             {productData.price}$
           </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                {productData.name}
+              <Link to={to}>{productData.name}</Link>
             </Typography>
         </CardContent>
 

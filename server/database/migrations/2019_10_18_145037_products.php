@@ -20,6 +20,7 @@ class Products extends Migration
             $table->integer("price");
             $table->integer('count');
             $table->string('image_path');
+            $table->text('description');
             $table->integer('producer_id')->unsigned();
             $table->timestamps();
 
