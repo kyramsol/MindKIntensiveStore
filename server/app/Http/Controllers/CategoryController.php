@@ -11,4 +11,8 @@ class CategoryController extends Controller
         $categories=Category::all();
         return response()->json($categories)->header('Access-Control-Allow-Origin',"*");
     }
+    public function showProductsInCategory($id) {
+        $products=Category::find($id)->products;
+        return response()->json($products)->header('Access-Control-Allow-Origin', '*');
+    }
 }

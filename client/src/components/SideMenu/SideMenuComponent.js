@@ -3,7 +3,8 @@ import "./SideMenu.css";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import getData from "../../API-service";
 class SideMenu extends Component {
   constructor() {
     super();
@@ -13,21 +14,22 @@ class SideMenu extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost/api/category")
-      .then(response => response.json())
-      .then(categories => this.setState({ categoryData: categories }));
+    let data=getData("http://localhost/api/category");
+    data.then(categories => this.setState({ categoryData: categories }));
   }
 
   render() {
     const CategoryData = this.state.categoryData;
-    if (!CategoryData) return <div></div>;
+    if (!CategoryData) return <div className="Content">Loading</div>;
     return (
       <div className="widget">
         <h3 className="widget-title">Categories</h3>
         <List component="nav" aria-label="secondary mailbox folders">
           {CategoryData.map(item => (
             <ListItem button key={item.id}>
-              <ListItemText  primary={item.name} />
+              <Link to={"category/" + item.id}>
+                <ListItemText primary={item.name} />{" "}
+              </Link>
             </ListItem>
           ))}
         </List>

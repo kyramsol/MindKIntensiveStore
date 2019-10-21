@@ -17,11 +17,10 @@ class Page extends Component {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Content />
+              <Content type='mainpage' />
             </Route>
-            <Route path="/product/:id" component={ProductCard}>
-
-            </Route>
+            <Route path="/product/:id" component={ProductCard}/>
+            <Route path="/:category/:id" component={Content}/>
           </Switch>
         </Router>
 

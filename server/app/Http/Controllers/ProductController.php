@@ -10,8 +10,7 @@ class ProductController extends Controller
 {
     //
     public function ShowProducts(){
-        $products=DB::table('products')
-            ->leftjoin('order_products', 'id', '=', 'product_id')
+        $products=Product::leftjoin('order_products', 'id', '=', 'product_id')
             ->select('*')
             ->orderBy('quant', 'desc')->take(12)->get();
         return response()->json($products)->header('Access-Control-Allow-Origin',"*");

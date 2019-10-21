@@ -13,7 +13,7 @@ class ProductBlock extends Component {
   render() {
     const productData = this.props.value;
     if (!productData) return <div></div>;
-      let to='/product/'+productData.id;
+    let to = "/product/" + productData.id;
     return (
       <Card className="imag">
         <CardContent>
@@ -21,9 +21,9 @@ class ProductBlock extends Component {
           <Typography gutterBottom variant="h5" component="h2">
             {productData.price}$
           </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              <Link to={to}>{productData.name}</Link>
-            </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <Link to={to}>{productData.name}</Link>
+          </Typography>
         </CardContent>
 
         <CardActions>
