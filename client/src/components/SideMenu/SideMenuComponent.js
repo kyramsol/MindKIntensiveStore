@@ -27,7 +27,7 @@ class SideMenu extends Component {
         <List component="nav" aria-label="secondary mailbox folders">
           {CategoryData.map(item => (
             <ListItem button key={item.id}>
-              <Link to={"category/" + item.id}>
+              <Link to={"/category/" + item.id}>
                 <ListItemText primary={item.name} />{" "}
               </Link>
             </ListItem>

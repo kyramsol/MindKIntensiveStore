@@ -23,3 +23,5 @@ Route::get('/products', 'ProductController@showProducts');
 Route::get('/product/{id}', 'ProductController@showProduct');
 
 Route::get('category/{id}', 'CategoryController@showProductsInCategory');
+
+Route::get('image', 'ProductController@showImage');

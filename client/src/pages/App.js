@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./App.css";
 import Header from "./../components/Header/HeaderComponent";
 
@@ -9,22 +9,19 @@ import ProductCard from "../components/productcard/ProductPageComponent";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-class Page extends Component {
+class Page extends PureComponent {
   render() {
     return (
       <div>
         <Header />
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Content type='mainpage' />
-            </Route>
-            <Route path="/product/:id" component={ProductCard}/>
-            <Route path="/:category/:id" component={Content}/>
+            <Route path="/product/:id" component={ProductCard} />
+            <Route exact path="/" component={Content} />
+            <Route path="/category/:id" component={Content} />
           </Switch>
         </Router>
-
-        <Footer />
+        <Footer/>
       </div>
     );
   }

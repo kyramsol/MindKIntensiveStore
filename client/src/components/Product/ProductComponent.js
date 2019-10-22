@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 class ProductBlock extends Component {
   render() {
     const productData = this.props.value;
-    if (!productData) return <div></div>;
+    if (!productData) return <div> </div>;
     let to = "/product/" + productData.id;
     return (
       <Card className="imag">

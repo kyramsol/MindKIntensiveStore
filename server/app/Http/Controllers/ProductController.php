@@ -19,4 +19,7 @@ class ProductController extends Controller
         $product=Product::find($id);
         return response()->json($product)->header('Access-Control-Allow-Origin', '*');
     }
+    public function showImage() {
+        return asset('storage/7244142a1c6675a0490e24ec754489f5.jpg');
+    }
 }

@@ -3,22 +3,47 @@ import ProductBlock from "../Product/ProductComponent";
 import SideMenu from "../SideMenu/SideMenuComponent";
 import "./Content.css";
 import getData from "../../API-service";
+
+function getProducts() {
+  return getData("http://localhost/api/products");
+}
+
 class Content extends Component {
   state = { ProductData: null };
 
+  fetchdata = () => {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    let url;
+    console.log("mount");
+    if (this.props.match.params.id) {
+      url = `http://localhost/api/category/${id}`;
+    } else {
+      url = "http://localhost/api/products";
+    }
+
+    console.log(1);
+    let data = getData(url);
+
+    data.then(json => {
+      this.setState({ ProductData: json });
+    });
+  };
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+      console.log(prevProps);
+      console.log(this.props.match.params.id);
+      if (prevProps.match.params.id !== this.props.match.params.id) {
+        this.fetchdata();
+    }
+
+  }
+
   componentDidMount() {
-      let url;
-      if (this.props.type === 'mainpage')
-        url="http://localhost/api/products";
-      else
-          url='http://localhost/api/category/'+this.props.match.params.id;
-
-
-      let data=getData(url);
-
-      data.then(json => {
-        this.setState({ ProductData: json });
-      });
+    this.fetchdata();
   }
 
   render() {

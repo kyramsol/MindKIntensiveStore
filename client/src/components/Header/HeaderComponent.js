@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,9 +26,11 @@ export default function Header() {
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Toolbar>
+            <Router>
             <Typography variant="h6" className={classes.title}>
-              MindK-Store
+              <Link to='/'>MindK-Store</Link>
             </Typography>
+            </Router>
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
