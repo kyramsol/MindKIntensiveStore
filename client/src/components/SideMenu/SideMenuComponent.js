@@ -5,13 +5,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
 import "./SideMenu.css";
-import getData from "../../api/API-service";
+import getCategoriesList from "../../api/categoriesList";
 
 class SideMenu extends PureComponent {
   state = { categoryData: null };
 
   componentDidMount() {
-    let data = getData("http://localhost/api/category");
+    let data = getCategoriesList();
     data.then(categories => this.setState({ categoryData: categories }));
   }
 

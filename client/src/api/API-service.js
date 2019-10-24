@@ -1,3 +1,3 @@
 export default function getData(url) {
-  return fetch(url).then(response => response.json());
+  return fetch(process.env.REACT_APP_API_HOST+url).then(response => response.json());
 }

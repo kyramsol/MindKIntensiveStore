@@ -8,6 +8,8 @@ import Footer from "./../components/Footer/FooterComponent";
 import Content from "./../components/Content/ContentComponent";
 import ProductCard from "../components/productcard/ProductPageComponent";
 
+require('dotenv').config();
+
 class Page extends PureComponent {
   render() {
     return (
