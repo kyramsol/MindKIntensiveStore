@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+
 import "./Footer.css";
-class Footer extends Component {
+
+class Footer extends PureComponent {
   render() {
+
     return (
       <div className="Footer">
         <div className="copyright">

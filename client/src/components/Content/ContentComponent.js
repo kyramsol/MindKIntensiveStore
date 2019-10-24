@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import ProductBlock from "../Product/ProductComponent";
-import SideMenu from "../SideMenu/SideMenuComponent";
+import React, { PureComponent } from "react";
 import "./Content.css";
 import getData from "../../API-service";
+
+import ProductBlock from "../Product/ProductComponent";
+import SideMenu from "../SideMenu/SideMenuComponent";
 
 function getProducts() {
   return getData("http://localhost/api/products");
 }
 
-class Content extends Component {
+class Content extends PureComponent {
   state = { ProductData: null };
 
   fetchdata = () => {
@@ -17,15 +18,15 @@ class Content extends Component {
         params: { id }
       }
     } = this.props;
+
     let url;
-    console.log("mount");
+
     if (this.props.match.params.id) {
       url = `http://localhost/api/category/${id}`;
     } else {
       url = "http://localhost/api/products";
     }
 
-    console.log(1);
     let data = getData(url);
 
     data.then(json => {
@@ -34,12 +35,9 @@ class Content extends Component {
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-      console.log(prevProps);
-      console.log(this.props.match.params.id);
-      if (prevProps.match.params.id !== this.props.match.params.id) {
-        this.fetchdata();
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.fetchdata();
     }
-
   }
 
   componentDidMount() {
@@ -49,13 +47,16 @@ class Content extends Component {
   render() {
     const product = this.state.ProductData;
     if (!product) return <div className="Content">loading</div>;
+
     return (
       <div className="Content">
         <SideMenu />
         <div className="Content-product">
+
           {product.map(item => (
             <ProductBlock key={item.id} value={item} />
           ))}
+
         </div>
       </div>
     );

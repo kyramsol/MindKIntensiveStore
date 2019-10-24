@@ -11,8 +11,8 @@ class ProductController extends Controller
     //
     public function ShowProducts(){
         $products=Product::leftjoin('order_products', 'id', '=', 'product_id')
-            ->select('*')
-            ->orderBy('quant', 'desc')->take(12)->get();
+            ->select(DB::raw('sum(quant) as max '), 'id','name', 'image_path', 'price')->groupBy('id')
+            ->orderBy('max', 'desc')->take(12)->get();
         return response()->json($products)->header('Access-Control-Allow-Origin',"*");
     }
     public function ShowProduct($id){

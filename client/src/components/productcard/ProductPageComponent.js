@@ -1,15 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+
 import "./ProductCard.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
-class ProductCard extends Component {
+
+class ProductCard extends PureComponent {
   state = { ProductData: null };
 
   componentDidMount() {
@@ -23,6 +18,7 @@ class ProductCard extends Component {
   render() {
     const product = this.state.ProductData;
     if (!product) return <div className="Content">loading</div>;
+
     return (
       <div className="Content">
         <div>
@@ -31,7 +27,7 @@ class ProductCard extends Component {
           </Typography>
           <div className="ProductCard">
             <div className="ProductImage">
-              <img src={product.image_path} />
+              <img alt={product.image_path} src={product.image_path} />
               <Typography gutterBottom variant="h5" component="h2">
                 {product.price}$
               </Typography>
@@ -52,4 +48,5 @@ class ProductCard extends Component {
     );
   }
 }
+
 export default ProductCard;
