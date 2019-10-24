@@ -13,17 +13,16 @@ class ProductBlock extends PureComponent {
   render() {
     const productData = this.props.value;
     if (!productData) return <div> </div>;
-    let to = "/product/" + productData.id;
 
     return (
       <Card className="imag">
         <CardContent>
-          <img alt='Image of product' src={productData.image_path} />
+          <img alt='Hello world' src={productData.image_path} />
           <Typography gutterBottom variant="h5" component="h2">
             {productData.price}$
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <Link to={to}>{productData.name}</Link>
+            <Link to={`/product/${productData.id}`}>{productData.name}</Link>
           </Typography>
         </CardContent>
         <CardActions>

@@ -5,7 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
 import "./SideMenu.css";
-import getData from "../../API-service";
+import getData from "../../api/API-service";
 
 class SideMenu extends PureComponent {
   state = { categoryData: null };
@@ -23,7 +23,6 @@ class SideMenu extends PureComponent {
       <div className="widget">
         <h3 className="widget-title">Categories</h3>
         <List component="nav" aria-label="secondary mailbox folders">
-
           {CategoryData.map(item => (
             <ListItem button key={item.id}>
               <Link to={"/category/" + item.id}>
@@ -31,7 +30,6 @@ class SideMenu extends PureComponent {
               </Link>
             </ListItem>
           ))}
-
         </List>
       </div>
     );

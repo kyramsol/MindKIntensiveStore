@@ -20,7 +20,6 @@ class Page extends PureComponent {
             <Route path="/category/:id" component={Content} />
           </Switch>
         </Router>
-        <Pagination limit={1} offset={0} total={66} />
         <Footer />
       </div>
     );

@@ -1,13 +1,12 @@
 import React, { PureComponent } from "react";
+import Pagination from "material-ui-flat-pagination"
+
 import "./Content.css";
-import getData from "../../API-service";
 
 import ProductBlock from "../Product/ProductComponent";
 import SideMenu from "../SideMenu/SideMenuComponent";
-
-function getProducts() {
-  return getData("http://localhost/api/products");
-}
+import getProducts from "../../api/products";
+import getCategory from "../../api/category";
 
 class Content extends PureComponent {
   state = { ProductData: null };
@@ -19,19 +18,19 @@ class Content extends PureComponent {
       }
     } = this.props;
 
-    let url;
+    let data;
 
     if (this.props.match.params.id) {
-      url = `http://localhost/api/category/${id}`;
+      data = getCategory(id);
+      data.then(json => {
+        this.setState({ ProductData: json.data });
+      });
     } else {
-      url = "http://localhost/api/products";
+      data = getProducts();
+      data.then(json => {
+        this.setState({ ProductData: json });
+      });
     }
-
-    let data = getData(url);
-
-    data.then(json => {
-      this.setState({ ProductData: json });
-    });
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -52,11 +51,9 @@ class Content extends PureComponent {
       <div className="Content">
         <SideMenu />
         <div className="Content-product">
-
           {product.map(item => (
             <ProductBlock key={item.id} value={item} />
           ))}
-
         </div>
       </div>
     );
