@@ -1,6 +1,6 @@
 import getData from "./API-service";
 
 export default function getProducts() {
-    const Url='products';
-    return getData(Url);
+    const URL='products';
+    return getData(URL);
 }

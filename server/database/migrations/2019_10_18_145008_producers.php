@@ -15,9 +15,9 @@ class Producers extends Migration
     {
         Schema::create('producers', function (Blueprint $table)
         {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('name');
-            $table->text("description");
+            $table->text('description');
             $table->timestamps();
         });
     }

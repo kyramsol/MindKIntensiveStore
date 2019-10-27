@@ -12,16 +12,7 @@ class StoreDB extends Migration
      * @return void
      */
     public function up()
-    {
-
-
-
-
-
-
-
-
-    }
+    {}
 
     /**
      * Reverse the migrations.

@@ -9,9 +9,8 @@ import { Link } from "react-router-dom";
 import "./Productblock.css";
 
 class ProductBlock extends PureComponent {
-
   render() {
-    const productData = this.props.value;
+    const {value: productData} = this.props;
     if (!productData) return <div> </div>;
 
     return (

@@ -9,13 +9,7 @@ class CategoryController extends Controller
 {
 
     public function showCategories() {
-        $categories=Category::all();
+        $categories = Category::all();
         return response()->json($categories);
     }
-
-    public function showProductsInCategory($id) {
-        $products=Category::find($id)->products()->SimplePaginate(2);
-        return response()->json($products);
-    }
-
 }

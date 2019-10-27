@@ -7,6 +7,7 @@ import Header from "./../components/Header/HeaderComponent";
 import Footer from "./../components/Footer/FooterComponent";
 import Content from "./../components/Content/ContentComponent";
 import ProductCard from "../components/productcard/ProductPageComponent";
+import Paginate from "../components/Pagination/PaginationComponent";
 
 require('dotenv').config();
 
@@ -19,7 +20,7 @@ class Page extends PureComponent {
           <Switch>
             <Route path="/product/:id" component={ProductCard} />
             <Route exact path="/" component={Content} />
-            <Route path="/category/:id" component={Content} />
+            <Route path="/:category/:id" component={Content} />
           </Switch>
         </Router>
         <Footer />

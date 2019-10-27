@@ -1,15 +1,14 @@
 import React, { PureComponent } from "react";
-import Pagination from "material-ui-flat-pagination"
+import Pagination from "material-ui-flat-pagination";
 
 import "./Content.css";
-
 import ProductBlock from "../Product/ProductComponent";
 import SideMenu from "../SideMenu/SideMenuComponent";
 import getProducts from "../../api/products";
 import getCategory from "../../api/category";
 
 class Content extends PureComponent {
-  state = { ProductData: null };
+  state = { productData: null, paginationData: null };
 
   fetchdata = () => {
     const {
@@ -18,19 +17,29 @@ class Content extends PureComponent {
       }
     } = this.props;
 
-    let data;
-
-    if (this.props.match.params.id) {
-      data = getCategory(id);
-      data.then(json => {
-        this.setState({ ProductData: json.data });
+    if (id) {
+      getCategory(id).then(json => {
+        const { data, ...rest } = json;
+        this.setState({ productData: data, paginationData: rest });
       });
     } else {
-      data = getProducts();
-      data.then(json => {
-        this.setState({ ProductData: json });
+      getProducts().then(json => {
+        this.setState({ productData: json });
       });
     }
+  };
+
+  nextPage = page => {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
+    getCategory(id, page).then(json => {
+      const { data, ...rest } = json;
+      this.setState({ productData: data, paginationData: rest });
+    });
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -44,7 +53,10 @@ class Content extends PureComponent {
   }
 
   render() {
-    const product = this.state.ProductData;
+    let i = 0;
+    const { productData: product } = this.state;
+    const { paginationData } = this.state;
+    console.log(this.state.productData, this.state.paginationData);
     if (!product) return <div className="Content">loading</div>;
 
     return (
@@ -55,8 +67,15 @@ class Content extends PureComponent {
             <ProductBlock key={item.id} value={item} />
           ))}
         </div>
+        <Pagination
+          limit={i}
+          offset={paginationData.current_page - 1}
+          total={paginationData.last_page}
+          onClick={(ev, offset, page) => this.nextPage(page)}
+        />
       </div>
     );
   }
 }
+
 export default Content;
