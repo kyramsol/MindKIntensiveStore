@@ -2,8 +2,8 @@ import React, { PureComponent } from "react";
 import Pagination from "material-ui-flat-pagination";
 
 import "./Content.css";
-import ProductBlock from "../Product/ProductComponent";
-import SideMenu from "../SideMenu/SideMenuComponent";
+import ProductBlock from "../Product/Product";
+import SideMenu from "../SideMenu/SideMenu";
 import getProducts from "../../api/products";
 import getCategory from "../../api/category";
 
@@ -42,12 +42,12 @@ class Content extends PureComponent {
     });
   };
 
-  renderPagination(l_page, c_page) {
+  renderPagination(lastPage, currentPage) {
     return (
       <Pagination
         limit={0}
-        offset={c_page - 1}
-        total={l_page}
+        offset={currentPage - 1}
+        total={lastPage}
         onClick={(ev, offset, page) => this.nextPage(page)}
       />
     );

@@ -6,9 +6,13 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
+import CartTools from "../../../tools/cart/CartTools";
 import "./Productblock.css";
 
 class ProductBlock extends PureComponent {
+
+
+
   render() {
     const { value: productData } = this.props;
 
@@ -16,7 +20,7 @@ class ProductBlock extends PureComponent {
       productData && (
         <Card className="imag">
           <CardContent>
-            <img alt="Hello world" src={productData.image_path} />
+            <img alt="Data not found" src={productData.image_path} />
             <Typography gutterBottom variant="h5" component="h2">
               {productData.price}$
             </Typography>
@@ -25,7 +29,7 @@ class ProductBlock extends PureComponent {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="large" color="primary">
+            <Button size="large" color="primary" onClick={() => {this.addToCart(productData)}}>
               Buy
             </Button>
           </CardActions>

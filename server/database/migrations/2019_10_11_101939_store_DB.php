@@ -12,7 +12,8 @@ class StoreDB extends Migration
      * @return void
      */
     public function up()
-    {}
+    {
+    }
 
     /**
      * Reverse the migrations.
@@ -27,9 +28,6 @@ class StoreDB extends Migration
         Schema::dropIfExists('products');
         Schema::dropIfExists('categories');
         Schema::dropIfExists('producers');
-
-
-
 
 
     }

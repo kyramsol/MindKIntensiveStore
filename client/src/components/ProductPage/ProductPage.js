@@ -25,6 +25,11 @@ class ProductCard extends PureComponent {
     this.fetchdata();
   }
 
+  addToCart(item) {
+    let item2 = JSON.stringify(item);
+    localStorage.setItem(item.id, item2);
+  }
+
   render() {
     const { productData: product } = this.state;
 
@@ -37,7 +42,7 @@ class ProductCard extends PureComponent {
             </Typography>
             <div className="ProductCard">
               <div className="ProductImage">
-                <img alt={product.image_path} src={product.image_path} />
+                <img alt="Data not found" src={product.image_path} />
                 <Typography gutterBottom variant="h5" component="h2">
                   {product.price}$
                 </Typography>
@@ -48,7 +53,13 @@ class ProductCard extends PureComponent {
                     {product.description}
                   </Typography>
                 </div>
-                <Button size="large" color="primary">
+                <Button
+                  size="large"
+                  color="primary"
+                  onClick={() => {
+                    this.addToCart(product);
+                  }}
+                >
                   Add To Cart
                 </Button>
               </div>

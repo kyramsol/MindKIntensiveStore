@@ -26,7 +26,7 @@ class SideMenu extends PureComponent {
           <List component="nav" aria-label="secondary mailbox folders">
             {categoryData.map(item => (
               <ListItem button key={item.id}>
-                <Link to={`/${item.name}/${item.id}`}>
+                <Link to={`/category/${item.id}/products`}>
                   <ListItemText primary={item.name} />{" "}
                 </Link>
               </ListItem>

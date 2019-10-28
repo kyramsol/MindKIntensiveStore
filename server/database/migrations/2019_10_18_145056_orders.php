@@ -13,8 +13,7 @@ class Orders extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table)
-        {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('adress');

@@ -13,8 +13,7 @@ class CategoriesProducts extends Migration
      */
     public function up()
     {
-        Schema::create('categories_products', function (Blueprint $table)
-        {
+        Schema::create('categories_products', function (Blueprint $table) {
             $table->integer('product_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->timestamps();

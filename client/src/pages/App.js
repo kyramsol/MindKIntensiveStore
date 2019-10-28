@@ -2,26 +2,25 @@ import React, { PureComponent } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Header from "./../components/Header/HeaderComponent";
-import Footer from "./../components/Footer/FooterComponent";
-import Content from "./../components/Content/ContentComponent";
-import ProductCard from "../components/ProductCard/ProductPageComponent";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Content from "../components/Content/Content";
+import ProductCard from "../components/ProductPage/ProductPage";
 
-require("dotenv").config();
+console.log(process.env);
 
 class Page extends PureComponent {
   render() {
     return (
       <div>
-        <Header />
         <Router>
+          <Header />
           <Switch>
             <Route path="/product/:id" component={ProductCard} />
-            <Route exact path="/" component={Content} />
-            <Route path="/:category/:id" component={Content} />
+            <Route path="/:category?/:id?" component={Content} />
           </Switch>
+          <Footer />
         </Router>
-        <Footer />
       </div>
     );
   }
