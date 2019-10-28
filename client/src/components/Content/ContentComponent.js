@@ -42,6 +42,17 @@ class Content extends PureComponent {
     });
   };
 
+  renderPagination(l_page, c_page) {
+    return (
+      <Pagination
+        limit={0}
+        offset={c_page - 1}
+        total={l_page}
+        onClick={(ev, offset, page) => this.nextPage(page)}
+      />
+    );
+  }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.fetchdata();
@@ -53,27 +64,34 @@ class Content extends PureComponent {
   }
 
   render() {
-    let i = 0;
+    let paginate;
     const { productData: product } = this.state;
-    const { paginationData } = this.state;
-    console.log(this.state.productData, this.state.paginationData);
-    if (!product) return <div className="Content">loading</div>;
+    const { paginationData: pages } = this.state;
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
+    if (id && pages) {
+      paginate = this.renderPagination(pages.last_page, pages.current_page);
+    }
 
     return (
-      <div className="Content">
-        <SideMenu />
-        <div className="Content-product">
-          {product.map(item => (
-            <ProductBlock key={item.id} value={item} />
-          ))}
+      product && (
+        <div className="Content">
+          <SideMenu />
+          <div>
+            {paginate}
+            <div className="Content-product">
+              {product.map(item => (
+                <ProductBlock key={item.id} value={item} />
+              ))}
+            </div>
+            {paginate}
+          </div>
         </div>
-        <Pagination
-          limit={i}
-          offset={paginationData.current_page - 1}
-          total={paginationData.last_page}
-          onClick={(ev, offset, page) => this.nextPage(page)}
-        />
-      </div>
+      )
     );
   }
 }

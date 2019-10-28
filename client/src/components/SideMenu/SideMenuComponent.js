@@ -11,26 +11,29 @@ class SideMenu extends PureComponent {
   state = { categoryData: null };
 
   componentDidMount() {
-    getCategoriesList().then(categories => this.setState({ categoryData: categories }));
+    getCategoriesList().then(categories =>
+      this.setState({ categoryData: categories })
+    );
   }
 
   render() {
-    const {categoryData}=this.state;
-    if (!categoryData) return <div className="Content">Loading</div>;
+    const { categoryData } = this.state;
 
     return (
-      <div className="widget">
-        <h3 className="widget-title">Categories</h3>
-        <List component="nav" aria-label="secondary mailbox folders">
-          {categoryData.map(item => (
-            <ListItem button key={item.id}>
-              <Link to={`/${item.name}/${item.id}`}>
-                <ListItemText primary={item.name} />{" "}
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-      </div>
+      categoryData && (
+        <div className="widget">
+          <h3 className="widget-title">Categories</h3>
+          <List component="nav" aria-label="secondary mailbox folders">
+            {categoryData.map(item => (
+              <ListItem button key={item.id}>
+                <Link to={`/${item.name}/${item.id}`}>
+                  <ListItemText primary={item.name} />{" "}
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      )
     );
   }
 }

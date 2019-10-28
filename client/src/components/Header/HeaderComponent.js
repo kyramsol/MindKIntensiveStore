@@ -30,7 +30,10 @@ export default function Header() {
               <Link to="/">MindK-Store</Link>
             </Typography>
           </Router>
-          <Button color="inherit">Login</Button>
+          <div>
+            <Button color="inherit">Cart</Button>
+            <Button color="inherit">Login</Button>
+          </div>
         </Toolbar>
       </AppBar>
     </div>

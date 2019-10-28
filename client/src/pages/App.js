@@ -1,15 +1,13 @@
 import React, { PureComponent } from "react";
 import "./App.css";
-import Pagination from "material-ui-flat-pagination";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./../components/Header/HeaderComponent";
 import Footer from "./../components/Footer/FooterComponent";
 import Content from "./../components/Content/ContentComponent";
-import ProductCard from "../components/productcard/ProductPageComponent";
-import Paginate from "../components/Pagination/PaginationComponent";
+import ProductCard from "../components/ProductCard/ProductPageComponent";
 
-require('dotenv').config();
+require("dotenv").config();
 
 class Page extends PureComponent {
   render() {
