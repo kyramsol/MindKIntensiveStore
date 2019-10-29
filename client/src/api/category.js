@@ -1,6 +1,14 @@
 import getData from "./API-service";
 
-export default function getCategory(id, page) {
-  const Url = `category/${id}?page=${page}`;
-  return getData(Url);
+class Category {
+
+  static getCategoriesList() {
+    return getData("category");
+  }
+
+  static getCategory(id, page) {
+    return getData(`category/${id}?page=${page}`);
+  }
 }
+
+export default Category;

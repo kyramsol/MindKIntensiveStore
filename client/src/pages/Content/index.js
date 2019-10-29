@@ -5,10 +5,20 @@ import "../../components/Content/Content.css";
 import ProductBlock from "../../components/Product/Product";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import getProducts from "../../api/products";
-import getCategory from "../../api/category";
+import Category from "../../api/category";
 
 class Content extends PureComponent {
   state = { productData: null, currentPage: null, lastPage: null };
+
+  getCategoryData = (id, page) => {
+    Category.getCategory(id, page).then(json => {
+      this.setState({
+        productData: json.data,
+        currentPage: json.current_page,
+        lastPage: json.last_page
+      });
+    });
+  };
 
   fetchData = () => {
     const {
@@ -18,13 +28,7 @@ class Content extends PureComponent {
     } = this.props;
 
     if (id) {
-      getCategory(id).then(json => {
-        this.setState({
-          productData: json.data,
-          currentPage: json.current_page,
-          lastPage: json.last_page
-        });
-      });
+      this.getCategoryData(id);
     } else {
       getProducts().then(json => {
         this.setState({ productData: json });
@@ -39,25 +43,8 @@ class Content extends PureComponent {
       }
     } = this.props;
 
-    getCategory(id, page).then(json => {
-      this.setState({
-        productData: json.data,
-        currentPage: json.current_page,
-        lastPage: json.last_page
-      });
-    });
+    this.getCategoryData(id, page);
   };
-
-  renderPagination(lastPage, currentPage) {
-    return (
-      <Pagination
-        limit={0}
-        offset={currentPage - 1}
-        total={lastPage}
-        onClick={(ev, offset, page) => this.nextPage(page)}
-      />
-    );
-  }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
@@ -71,16 +58,22 @@ class Content extends PureComponent {
 
   render() {
     let paginate;
-    const { productData: product } = this.state;
-    const { lastPage } = this.state;
-    const { currentPage } = this.state;
+    const { lastPage, currentPage, productData: product } = this.state;
     const {
       match: {
         params: { id }
       }
     } = this.props;
+
     if (id && lastPage && currentPage) {
-      paginate = this.renderPagination(lastPage, currentPage);
+      paginate = (
+        <Pagination
+          limit={0}
+          offset={currentPage - 1}
+          total={lastPage}
+          onClick={(ev, offset, page) => this.nextPage(page)}
+        />
+      );
     }
 
     return (

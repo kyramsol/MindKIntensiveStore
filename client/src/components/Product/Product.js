@@ -14,7 +14,6 @@ class ProductBlock extends PureComponent {
     const { value: productData } = this.props;
 
     return (
-      productData && (
         <Card className="imag">
           <CardContent>
             <img alt="Data not found" src={productData.image_path} />
@@ -37,7 +36,6 @@ class ProductBlock extends PureComponent {
             </Button>
           </CardActions>
         </Card>
-      )
     );
   }
 }

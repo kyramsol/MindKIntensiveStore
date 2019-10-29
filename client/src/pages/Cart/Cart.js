@@ -25,7 +25,6 @@ class Cart extends PureComponent {
 
   render() {
     const { productData } = this.state;
-    let i = 0;
     return (
       productData && (
         <div className="Content">
@@ -41,9 +40,9 @@ class Cart extends PureComponent {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Object.entries(productData).map(row => (
+                {Object.entries(productData).map((row, index) => (
                   <TableRow key={row[1].id}>
-                    <TableCell>{(i += 1)}</TableCell>
+                    <TableCell>{(index+1)}</TableCell>
                     <TableCell>{row[1].name}</TableCell>
                     <TableCell>{row[1].price}$</TableCell>
                     <TableCell align={"center"}>
