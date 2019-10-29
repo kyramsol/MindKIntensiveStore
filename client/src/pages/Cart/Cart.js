@@ -33,19 +33,10 @@ class Cart extends PureComponent {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>
-                    <b>№</b>
-                  </TableCell>
-                  <TableCell>
-                    <b>Name</b>
-                  </TableCell>
-                  <TableCell>
-                    <b>Price</b>
-                  </TableCell>
-                  <TableCell>{}</TableCell>
-                  <TableCell>
-                    <b>Count</b>
-                  </TableCell>
+                  <TableCell>№</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Price</TableCell>
+                  <TableCell align={"center"}>Count</TableCell>
                   <TableCell>{}</TableCell>
                 </TableRow>
               </TableHead>
@@ -54,26 +45,28 @@ class Cart extends PureComponent {
                   <TableRow key={row[1].id}>
                     <TableCell>{(i += 1)}</TableCell>
                     <TableCell>{row[1].name}</TableCell>
-                    <TableCell>{row[1].price}</TableCell>
-                    <TableCell>
-                      <Button
-                        onClick={() => {
-                          CartTools.takeAwayAnotherOne(row[1].id);
-                          this.getDataFromLocal();
-                        }}
-                      >
-                        -
-                      </Button>
-                      {row[1].count}
-                      <Button
-                        size="small"
-                        onClick={() => {
-                          CartTools.addAnotherOne(row[1].id);
-                          this.getDataFromLocal();
-                        }}
-                      >
-                        +
-                      </Button>
+                    <TableCell>{row[1].price}$</TableCell>
+                    <TableCell align={"center"}>
+                      <div>
+                        <Button
+                          onClick={() => {
+                            CartTools.takeAwayAnotherOne(row[1].id);
+                            this.getDataFromLocal();
+                          }}
+                        >
+                          -
+                        </Button>
+                        {row[1].count}
+                        <Button
+                          size="small"
+                          onClick={() => {
+                            CartTools.addAnotherOne(row[1].id);
+                            this.getDataFromLocal();
+                          }}
+                        >
+                          +
+                        </Button>
+                      </div>
                     </TableCell>
                     <TableCell>
                       <IconButton

@@ -10,7 +10,7 @@ import CartTools from "../../tools/cart/CartTools";
 class ProductCard extends PureComponent {
   state = { productData: null };
 
-  fetchdata = () => {
+  fetchData = () => {
     const {
       match: {
         params: { id }
@@ -23,7 +23,7 @@ class ProductCard extends PureComponent {
   };
 
   componentDidMount() {
-    this.fetchdata();
+    this.fetchData();
   }
 
   render() {

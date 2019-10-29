@@ -8,9 +8,9 @@ import getProducts from "../../api/products";
 import getCategory from "../../api/category";
 
 class Content extends PureComponent {
-  state = { productData: null, paginationData: null };
+  state = { productData: null, currentPage: null, lastPage: null };
 
-  fetchdata = () => {
+  fetchData = () => {
     const {
       match: {
         params: { id }
@@ -19,8 +19,11 @@ class Content extends PureComponent {
 
     if (id) {
       getCategory(id).then(json => {
-        const { data, ...rest } = json;
-        this.setState({ productData: data, paginationData: rest });
+        this.setState({
+          productData: json.data,
+          currentPage: json.current_page,
+          lastPage: json.last_page
+        });
       });
     } else {
       getProducts().then(json => {
@@ -37,8 +40,11 @@ class Content extends PureComponent {
     } = this.props;
 
     getCategory(id, page).then(json => {
-      const { data, ...rest } = json;
-      this.setState({ productData: data, paginationData: rest });
+      this.setState({
+        productData: json.data,
+        currentPage: json.current_page,
+        lastPage: json.last_page
+      });
     });
   };
 
@@ -55,26 +61,26 @@ class Content extends PureComponent {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.fetchdata();
+      this.fetchData();
     }
   }
 
   componentDidMount() {
-    this.fetchdata();
+    this.fetchData();
   }
 
   render() {
     let paginate;
     const { productData: product } = this.state;
-    const { paginationData: pages } = this.state;
+    const { lastPage } = this.state;
+    const { currentPage } = this.state;
     const {
       match: {
         params: { id }
       }
     } = this.props;
-    console.log(product);
-    if (id && pages) {
-      paginate = this.renderPagination(pages.last_page, pages.current_page);
+    if (id && lastPage && currentPage) {
+      paginate = this.renderPagination(lastPage, currentPage);
     }
 
     return (
