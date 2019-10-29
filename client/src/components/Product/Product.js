@@ -6,13 +6,10 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
-import CartTools from "../../../tools/cart/CartTools";
+import CartTools from "../../tools/cart/CartTools";
 import "./Productblock.css";
 
 class ProductBlock extends PureComponent {
-
-
-
   render() {
     const { value: productData } = this.props;
 
@@ -29,7 +26,13 @@ class ProductBlock extends PureComponent {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="large" color="primary" onClick={() => {this.addToCart(productData)}}>
+            <Button
+              size="large"
+              color="primary"
+              onClick={() => {
+                CartTools.addToCart(productData);
+              }}
+            >
               Buy
             </Button>
           </CardActions>
@@ -38,4 +41,5 @@ class ProductBlock extends PureComponent {
     );
   }
 }
+
 export default ProductBlock;

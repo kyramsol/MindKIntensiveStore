@@ -3,8 +3,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
 import getProduct from "../../api/product";
-
-import "./ProductCard.css";
+import "../../components/ProductPage/ProductCard.css";
+import SideMenu from "../../components/SideMenu/SideMenu";
+import CartTools from "../../tools/cart/CartTools";
 
 class ProductCard extends PureComponent {
   state = { productData: null };
@@ -25,17 +26,13 @@ class ProductCard extends PureComponent {
     this.fetchdata();
   }
 
-  addToCart(item) {
-    let item2 = JSON.stringify(item);
-    localStorage.setItem(item.id, item2);
-  }
-
   render() {
     const { productData: product } = this.state;
 
     return (
       product && (
         <div className="Content">
+          <SideMenu/>
           <div>
             <Typography gutterBottom variant="h4" component="h2">
               {product.name}
@@ -57,7 +54,7 @@ class ProductCard extends PureComponent {
                   size="large"
                   color="primary"
                   onClick={() => {
-                    this.addToCart(product);
+                    CartTools.addToCart(product);
                   }}
                 >
                   Add To Cart

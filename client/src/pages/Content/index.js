@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import Pagination from "material-ui-flat-pagination";
 
-import "./Content.css";
-import ProductBlock from "../Product/Product";
-import SideMenu from "../SideMenu/SideMenu";
+import "../../components/Content/Content.css";
+import ProductBlock from "../../components/Product/Product";
+import SideMenu from "../../components/SideMenu/SideMenu";
 import getProducts from "../../api/products";
 import getCategory from "../../api/category";
 
@@ -72,7 +72,7 @@ class Content extends PureComponent {
         params: { id }
       }
     } = this.props;
-
+    console.log(product);
     if (id && pages) {
       paginate = this.renderPagination(pages.last_page, pages.current_page);
     }

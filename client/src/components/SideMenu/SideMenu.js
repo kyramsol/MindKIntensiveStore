@@ -27,7 +27,7 @@ class SideMenu extends PureComponent {
             {categoryData.map(item => (
               <ListItem button key={item.id}>
                 <Link to={`/category/${item.id}/products`}>
-                  <ListItemText primary={item.name} />{" "}
+                  <ListItemText primary={item.name} />
                 </Link>
               </ListItem>
             ))}
