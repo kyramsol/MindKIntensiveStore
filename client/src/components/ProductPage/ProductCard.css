@@ -1,0 +1,10 @@
+.ProductCard {
+  display: flex;
+  margin: 2vh;
+}
+.ProductDescription {
+  width: 300px;
+}
+.ProductImage {
+  margin: 2vh;
+}

@@ -7,6 +7,6 @@ $factory->define(App\Producer::class, function (Faker\Generator $faker) {
     return [
 
         'name' => $faker->name,
-        'description' => $faker -> sentence(5)
+        'description' => $faker->sentence(5)
     ];
 });

@@ -13,14 +13,6 @@ class StoreDB extends Migration
      */
     public function up()
     {
-
-
-
-
-
-
-
-
     }
 
     /**
@@ -36,9 +28,6 @@ class StoreDB extends Migration
         Schema::dropIfExists('products');
         Schema::dropIfExists('categories');
         Schema::dropIfExists('producers');
-
-
-
 
 
     }

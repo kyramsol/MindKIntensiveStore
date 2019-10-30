@@ -5,7 +5,7 @@ $factory->define(App\OrderProduct::class, function (Faker\Generator $faker) {
 
 
     return [
-        'quant' => $faker-> randomDigit,
+        'quant' => $faker->randomDigit,
         'order_id' => function () {
             return factory(App\Order::class)->create()->id;
         },

@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function showCategories() {
-        $categories=Category::all();
-        return response()->json($categories)->header('Access-Control-Allow-Origin',"*");
+
+    public function showCategories()
+    {
+        $categories = Category::all();
+        return response()->json($categories);
     }
 }

@@ -1,29 +1,28 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./App.css";
-import Header from "./../components/Header/HeaderComponent";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Footer from "./../components/Footer/FooterComponent";
+import Cart from "./Cart/Cart";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Content from "./Content";
+import ProductCard from "./ProductPage/ProductPage";
 
-import Content from "./../components/Content/ContentComponent";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-class Page extends Component {
+class Page extends PureComponent {
   render() {
     return (
       <div>
         <Router>
           <Header />
+          <div className="Content">
           <Switch>
-            <Route exact path="/">
-              <Content />
-            </Route>
-            <Route  path="/delivery">
-                <div className='Content'>Delivary</div>
-            </Route>
+            <Route path="/cart" component={Cart}/>
+            <Route path="/product/:id" component={ProductCard} />
+            <Route path="/:category?/:id?" component={Content} />
           </Switch>
+          </div>
+          <Footer />
         </Router>
-        <Footer />
       </div>
     );
   }
