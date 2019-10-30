@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function showProductsInCategory($id)
     {
-        $products = Product::whereHas('categories' , function ($query) use ($id) {
+        $products = Product::whereHas('categories', function ($query) use ($id) {
             $query->where('id', '=', $id);
         })->paginate(12);
 
@@ -29,7 +29,7 @@ class ProductController extends Controller
 
     public function showProduct($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return response()->json($product);
     }
 }

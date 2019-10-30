@@ -40,26 +40,26 @@ class Cart extends PureComponent {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Object.entries(productData).map((row, index) => (
-                  <TableRow key={row[1].id}>
-                    <TableCell>{(index+1)}</TableCell>
-                    <TableCell>{row[1].name}</TableCell>
-                    <TableCell>{row[1].price}$</TableCell>
+                {Object.keys(productData).map((row, index) => (
+                  <TableRow key={productData[row].id}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{productData[row].name}</TableCell>
+                    <TableCell>{productData[row].price}$</TableCell>
                     <TableCell align={"center"}>
                       <div>
                         <Button
                           onClick={() => {
-                            CartTools.takeAwayAnotherOne(row[1].id);
+                            CartTools.takeAwayAnotherOne(productData[row].id);
                             this.getDataFromLocal();
                           }}
                         >
                           -
                         </Button>
-                        {row[1].count}
+                        {productData[row].count}
                         <Button
                           size="small"
                           onClick={() => {
-                            CartTools.addAnotherOne(row[1].id);
+                            CartTools.addAnotherOne(productData[row].id);
                             this.getDataFromLocal();
                           }}
                         >
@@ -71,7 +71,7 @@ class Cart extends PureComponent {
                       <IconButton
                         color="default"
                         onClick={() => {
-                          CartTools.removeFromCart(row[1].id);
+                          CartTools.removeFromCart(productData[row].id);
                           this.getDataFromLocal();
                         }}
                       >
